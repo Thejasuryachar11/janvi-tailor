@@ -1,0 +1,352 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { BUSINESS_INFO, SERVICES_MEN, SERVICES_WOMEN, SERVICES_SPECIAL, FEATURES, TESTIMONIALS } from '@/lib/constants';
+
+export default function Home() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">{/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all-300 ${isScrolled ? 'glass' : 'bg-transparent'} border-b border-transparent hover:border-primary/20`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <Link href="/" className="font-serif text-2xl font-bold text-primary tracking-wider">
+            JANVI
+          </Link>
+          <div className="hidden md:flex gap-8 items-center">
+            <a href="#services" className="text-sm tracking-widest hover:text-primary transition-colors">SERVICES</a>
+            <a href="#about" className="text-sm tracking-widest hover:text-primary transition-colors">ABOUT</a>
+            <a href="#gallery" className="text-sm tracking-widest hover:text-primary transition-colors">GALLERY</a>
+            <a href="#testimonials" className="text-sm tracking-widest hover:text-primary transition-colors">TESTIMONIALS</a>
+            <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-primary-foreground font-semibold tracking-wider text-sm hover:bg-primary/90 transition-all">
+              CONTACT
+            </a>
+          </div>
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-primary">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
+        </div>
+        {isMenuOpen && (
+          <div className="md:hidden bg-card border-t border-border p-4 space-y-4">
+            <a href="#services" className="block text-sm tracking-widest hover:text-primary">SERVICES</a>
+            <a href="#about" className="block text-sm tracking-widest hover:text-primary">ABOUT</a>
+            <a href="#gallery" className="block text-sm tracking-widest hover:text-primary">GALLERY</a>
+            <a href="#testimonials" className="block text-sm tracking-widest hover:text-primary">TESTIMONIALS</a>
+            <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="block w-full px-6 py-2 bg-primary text-primary-foreground font-semibold text-center text-sm hover:bg-primary/90">
+              CONTACT
+            </a>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-gradient-hero opacity-50" />
+        
+        {/* Animated Background Elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl animate-float" />
+        <div className="absolute top-40 right-10 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-8 animate-scale-in">
+            <div className="inline-block">
+              <div className="glass px-6 py-3 mb-8">
+                <p className="text-primary text-sm tracking-widest font-semibold">PREMIUM TAILORING SERVICE</p>
+              </div>
+            </div>
+          </div>
+
+          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 leading-tight text-balance animate-slide-up">
+            Perfect Fit,<br />Perfect Craft
+          </h1>
+
+          <p className="text-xl text-foreground/80 mb-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            With {BUSINESS_INFO.experience} years of expertise, we deliver exceptional tailoring and alterations. From premium jeans to formal wear, every piece is crafted with precision and care.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-primary text-primary-foreground font-semibold tracking-wider hover:bg-primary/90 transition-all transform hover:scale-105">
+              BOOK NOW
+            </a>
+            <a href="#services" className="px-8 py-4 border-2 border-primary text-primary font-semibold tracking-wider hover:bg-primary/10 transition-all">
+              EXPLORE SERVICES
+            </a>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="grid grid-cols-3 gap-8 mt-20">
+            {[
+              { value: '25+', label: 'Years' },
+              { value: '5000+', label: 'Happy Clients' },
+              { value: '24hrs', label: 'Delivery' },
+            ].map((stat, i) => (
+              <div key={i} className="glass-light p-6 rounded transform hover:scale-110 transition-all">
+                <p className="text-2xl font-bold text-primary">{stat.value}</p>
+                <p className="text-sm text-foreground/60 tracking-widest">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Floating WhatsApp Button */}
+        <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-40 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:scale-110 transition-transform animate-float">
+          💬
+        </a>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 bg-secondary/20 border-y border-primary/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-serif text-5xl md:text-6xl font-bold mb-8 text-primary tracking-tight">About Janvi</h2>
+              <div className="space-y-6 text-foreground/80 leading-relaxed">
+                <p>Established by Vittal Koli, Janvi Jeans Tailore brings {BUSINESS_INFO.experience} years of tailoring expertise to Hyderabad. We specialize in professional alterations for jeans, pants, shirts, and complete tailoring services for formal and traditional wear.</p>
+                <p>Our team of skilled craftsmen is dedicated to providing perfect fitting guarantees on every garment. We offer trial before final delivery and serve individuals, boutiques, and bulk orders with equal dedication and precision.</p>
+                <p>Located in {BUSINESS_INFO.address}, we're committed to excellence in every stitch. Fast delivery within 24 hours and convenient home pickup & delivery service make quality tailoring accessible to everyone.</p>
+              </div>
+              <div className="mt-8 space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-primary text-2xl">✓</span>
+                  <span className="text-foreground/80">Perfect Fit Guarantee</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-primary text-2xl">✓</span>
+                  <span className="text-foreground/80">Trial Before Final Delivery</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-primary text-2xl">✓</span>
+                  <span className="text-foreground/80">24/7 Emergency Service</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="glass-light p-8 rounded-lg">
+                <Image src="/tailoring-4.jpg" alt="Our tailoring shop" width={400} height={500} className="w-full h-auto rounded-lg" />
+              </div>
+              <div className="absolute -bottom-4 -right-4 glass-dark p-6 rounded-lg w-48">
+                <p className="font-serif text-3xl font-bold text-primary">Founded</p>
+                <p className="text-sm text-foreground/60 mt-2">Professional tailoring since {new Date().getFullYear() - 25}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6 text-primary tracking-tight">Our Services</h2>
+            <p className="text-foreground/70 text-lg max-w-2xl mx-auto">Professional tailoring and alterations for every occasion</p>
+          </div>
+
+          {/* Men's Services */}
+          <div className="mb-20">
+            <h3 className="font-serif text-3xl font-bold mb-12 text-primary">Men's Tailoring</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {SERVICES_MEN.map((service) => (
+                <div key={service.id} className="group glass-light p-8 rounded-lg border-2 border-transparent hover:border-primary transition-all hover-3d">
+                  <p className="text-5xl mb-4">{service.icon}</p>
+                  <h4 className="font-serif text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{service.title}</h4>
+                  <p className="text-foreground/70 text-sm leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Women's Services */}
+          <div className="mb-20">
+            <h3 className="font-serif text-3xl font-bold mb-12 text-primary">Women's Tailoring</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {SERVICES_WOMEN.map((service) => (
+                <div key={service.id} className="group glass-light p-8 rounded-lg border-2 border-transparent hover:border-primary transition-all hover-3d">
+                  <p className="text-5xl mb-4">{service.icon}</p>
+                  <h4 className="font-serif text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{service.title}</h4>
+                  <p className="text-foreground/70 text-sm leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Special Services */}
+          <div>
+            <h3 className="font-serif text-3xl font-bold mb-12 text-primary">Special Services</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {SERVICES_SPECIAL.map((service) => (
+                <div key={service.id} className="group glass-light p-8 rounded-lg border-2 border-transparent hover:border-primary transition-all hover-3d">
+                  <p className="text-5xl mb-4">{service.icon}</p>
+                  <h4 className="font-serif text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{service.title}</h4>
+                  <p className="text-foreground/70 text-sm leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-24 bg-gradient-section border-y border-primary/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-20 text-primary text-center tracking-tight">Why Choose Us</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {FEATURES.map((feature, i) => (
+              <div key={i} className="group glass p-8 rounded-lg hover:glass-light transition-all transform hover:-translate-y-2">
+                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors">
+                  <span className="text-primary font-bold">{i + 1}</span>
+                </div>
+                <h3 className="font-serif text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
+                <p className="text-foreground/70 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-20 text-primary text-center tracking-tight">Our Work</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { src: '/tailoring-1.jpg', alt: 'Hand-stitching on premium denim' },
+              { src: '/tailoring-2.jpg', alt: 'Perfectly tailored formal wear' },
+              { src: '/tailoring-3.jpg', alt: 'Quality fabric collection' },
+              { src: '/tailoring-5.jpg', alt: 'Professional fitting service' },
+              { src: '/tailoring-6.jpg', alt: 'Custom tailored menswear' },
+              { src: '/tailoring-4.jpg', alt: 'Our tailoring shop' },
+            ].map((image, i) => (
+              <div key={i} className="group relative overflow-hidden rounded-lg glass-light hover:glass transition-all">
+                <Image src={image.src} alt={image.alt} width={400} height={400} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                  <p className="text-foreground text-sm font-semibold">{image.alt}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 bg-secondary/20 border-y border-primary/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-20 text-primary text-center tracking-tight">What Clients Say</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((testimonial, i) => (
+              <div key={i} className="glass-light p-8 rounded-lg transform hover:scale-105 transition-all">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, j) => (
+                    <span key={j} className="text-primary text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-foreground/80 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
+                <div>
+                  <p className="font-serif font-bold text-foreground">{testimonial.name}</p>
+                  <p className="text-primary text-sm">{testimonial.service}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-24 bg-gradient-hero">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-8 text-primary tracking-tight">Get Your Perfect Fit</h2>
+          <p className="text-lg text-foreground/80 mb-12 max-w-2xl mx-auto">Contact us via call or WhatsApp for fast, reliable tailoring with guaranteed perfect fit. Free home pickup & delivery available.</p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="glass-light p-8 rounded-lg">
+              <p className="text-4xl mb-4">📞</p>
+              <h3 className="font-serif text-lg font-bold mb-2 text-primary">Call Us</h3>
+              <a href={`tel:${BUSINESS_INFO.phone}`} className="text-foreground/80 hover:text-primary transition-colors">{BUSINESS_INFO.phone}</a>
+            </div>
+            <div className="glass-light p-8 rounded-lg">
+              <p className="text-4xl mb-4">📍</p>
+              <h3 className="font-serif text-lg font-bold mb-2 text-primary">Location</h3>
+              <p className="text-foreground/80">{BUSINESS_INFO.address}</p>
+            </div>
+            <div className="glass-light p-8 rounded-lg">
+              <p className="text-4xl mb-4">⏰</p>
+              <h3 className="font-serif text-lg font-bold mb-2 text-primary">Hours</h3>
+              <p className="text-foreground/80 text-sm">{BUSINESS_INFO.hours}</p>
+            </div>
+          </div>
+          <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 bg-primary text-primary-foreground font-semibold tracking-wider text-lg hover:bg-primary/90 transition-all transform hover:scale-105">
+            CONTACT ON WHATSAPP
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 bg-secondary border-t border-primary/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="font-serif text-lg font-bold text-primary mb-4">Janvi Jeans Tailore</h4>
+              <p className="text-foreground/60 text-sm">Professional tailoring since {new Date().getFullYear() - 25}</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-4">Services</h4>
+              <ul className="space-y-2 text-sm text-foreground/60">
+                <li><a href="#services" className="hover:text-primary transition-colors">Alterations</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Custom Tailoring</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Special Events</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-foreground/60">
+                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><a href="#gallery" className="hover:text-primary transition-colors">Gallery</a></li>
+                <li><a href="#testimonials" className="hover:text-primary transition-colors">Testimonials</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-foreground/60">
+                <li><a href={`tel:${BUSINESS_INFO.phone}`} className="hover:text-primary transition-colors">{BUSINESS_INFO.phone}</a></li>
+                <li><a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">WhatsApp</a></li>
+                <li className="text-xs mt-4">{BUSINESS_INFO.address}</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-primary/10 pt-8 space-y-4">
+            <p className="text-center text-foreground/60 text-sm tracking-widest">
+              © 2025 JANVI JEANS TAILORE. KACHIGUDA, HYDERABAD. ALL RIGHTS RESERVED.
+            </p>
+            <div className="text-center pt-4 border-t border-primary/10">
+              <p className="text-foreground/50 text-xs mb-2">Website created by</p>
+              <p className="text-primary font-semibold text-sm mb-1">
+                <a href="https://www.charvexglobal.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary/80 transition-colors">
+                  CHARVEX GLOBAL LLP
+                </a>
+              </p>
+              <p className="text-foreground/60 text-xs space-y-1">
+                <span>Founder & CEO: Theja Suryachar P J</span><br />
+                <span>Developer: Abhishek Koli</span><br />
+                <a href="https://www.charvexglobal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">
+                  www.charvexglobal.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
