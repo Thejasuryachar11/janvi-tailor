@@ -304,9 +304,9 @@ const [showAll, setShowAll] = useState(false);
         "/tailoring-1.jpg",
         "/tailoring-3.jpg",
         "/tailoring-5.jpg",
-        "/3.jpeg",
+        "/5.jpeg",
         "/7.jpeg",
-        "/8.jpeg",
+        "/30.jpeg",
         "/9.jpeg",
         "/10.jpeg",
         "/11.jpeg",
@@ -328,6 +328,7 @@ const [showAll, setShowAll] = useState(false);
         "/27.jpeg",
         "/28.jpeg",
         "/29.jpeg",
+        "/30.jpeg",
       ];
 
       const visibleImages = showAll ? images : images.slice(0, 6);
