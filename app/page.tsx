@@ -184,7 +184,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Women's Services */}
+          {/* Women's Services
           <div className="mb-20">
             <h3 className="font-serif text-3xl font-bold mb-12 text-primary">Women's Tailoring</h3>
             <div className="grid md:grid-cols-3 gap-8">
@@ -196,7 +196,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Special Services */}
           <div>

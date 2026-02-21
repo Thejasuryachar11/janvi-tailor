@@ -31,39 +31,39 @@ export const SERVICES_MEN = [
   },
 ];
 
-export const SERVICES_WOMEN = [
-  {
-    id: 1,
-    title: 'Dresses & Gowns',
-    description: 'Custom alterations for evening wear, party dresses, and regular dresses',
-    icon: '👗',
-  },
-  {
-    id: 2,
-    title: 'Salwar & Kurtis',
-    description: 'Traditional wear tailoring with precise measurements and perfect fitting',
-    icon: '🥻',
-  },
-  {
-    id: 3,
-    title: 'Trousers & Skirts',
-    description: 'Professional hemming and waist adjustments for all types of bottoms',
-    icon: '👖',
-  },
-];
+// export const SERVICES_WOMEN = [
+//   {
+//     id: 1,
+//     title: 'Dresses & Gowns',
+//     description: 'Custom alterations for evening wear, party dresses, and regular dresses',
+//     icon: '👗',
+//   },
+//   {
+//     id: 2,
+//     title: 'Salwar & Kurtis',
+//     description: 'Traditional wear tailoring with precise measurements and perfect fitting',
+//     icon: '🥻',
+//   },
+//   {
+//     id: 3,
+//     title: 'Trousers & Skirts',
+//     description: 'Professional hemming and waist adjustments for all types of bottoms',
+//     icon: '👖',
+//   },
+// ];
 
 export const SERVICES_SPECIAL = [
-  {
-    id: 1,
-    title: 'Lehenga & Saree Stitching',
-    description: 'Complete custom tailoring for bridal and festive traditional wear',
-    icon: '✨',
-  },
+  // {
+  //   id: 1,
+  //   title: 'Lehenga & Saree Stitching',
+  //   description: 'Complete custom tailoring for bridal and festive traditional wear',
+  //   icon: '✨',
+  // },
   {
     id: 2,
     title: 'Sherwani & Wedding Wear',
     description: 'Expert craftsmanship for grooms and special occasion traditional outfits',
-    icon: '👗',
+    icon: '👑',
   },
   {
     id: 3,
