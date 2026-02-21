@@ -17,6 +17,30 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const heroImages = ["/hero-bg.png", "/2.jpeg"];
+
+const [currentImage, setCurrentImage] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentImage((prev) => (prev + 1) % heroImages.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, []);
+
+const aboutImages = ["/abt1.jpeg", "/abt2.jpeg"];
+
+const [currentAboutImage, setCurrentAboutImage] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentAboutImage((prev) => (prev + 1) % aboutImages.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">{/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all-300 ${isScrolled ? 'glass' : 'bg-transparent'} border-b border-transparent hover:border-primary/20`}>
@@ -52,14 +76,20 @@ export default function Home() {
         )}
       </nav>
 
-        {/* Hero Section */}
-<section
-  className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-cover bg-center"
-  style={{ backgroundImage: "url('/hero-bg.jpg')" }}
->
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/60"></div>
+{/* Hero Section */}
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
 
+  {/* Background Slideshow */}
+<img
+  src={heroImages[currentImage]}
+  alt="Hero Background"
+  className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-3000"
+/>
+
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/60" />
+
+  {/* Content */}
   <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     
     <div className="mb-8">
@@ -76,7 +106,6 @@ export default function Home() {
 
     <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
       With {BUSINESS_INFO.experience} years of expertise, we deliver exceptional tailoring and alterations.
-      From premium jeans to formal wear, every piece is crafted with precision and care.
     </p>
 
     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -109,9 +138,10 @@ export default function Home() {
         </div>
       ))}
     </div>
+
   </div>
 
-  {/* Floating WhatsApp Button */}
+  {/* Floating WhatsApp */}
   <a
     href={BUSINESS_INFO.whatsapp}
     target="_blank"
@@ -120,6 +150,7 @@ export default function Home() {
   >
     💬
   </a>
+
 </section>
 
 
@@ -151,8 +182,12 @@ export default function Home() {
             </div>
             <div className="relative">
               <div className="glass-light p-8 rounded-lg">
-                <Image src="/tailoring-4.jpg" alt="Our tailoring shop" width={400} height={500} className="w-full h-auto rounded-lg" />
-              </div>
+  <img
+    src={aboutImages[currentAboutImage]}
+    alt="Our tailoring shop"
+    className="w-full h-full object-cover rounded-lg transition-all duration-1000 ease-in-out"
+  />
+</div>
               <div className="absolute -bottom-4 -right-4 glass-dark p-6 rounded-lg w-48">
                 <p className="font-serif text-3xl font-bold text-primary">Founded</p>
                 <p className="text-sm text-foreground/60 mt-2">Professional tailoring since {new Date().getFullYear() - 25}</p>
