@@ -40,6 +40,7 @@ useEffect(() => {
 
   return () => clearInterval(interval);
 }, []);
+const [showAll, setShowAll] = useState(false);
 
   return (
     <div className="min-h-screen bg-background text-foreground">{/* Navigation */}
@@ -293,27 +294,78 @@ useEffect(() => {
 
       {/* Gallery Section */}
       <section id="gallery" className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-20 text-primary text-center tracking-tight">Our Work</h2>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="font-serif text-5xl md:text-6xl font-bold mb-20 text-primary text-center tracking-tight">
+      Our Work
+    </h2>
+
+    {(() => {
+      const images = [
+        "/tailoring-1.jpg",
+        "/tailoring-3.jpg",
+        "/tailoring-5.jpg",
+        "/3.jpeg",
+        "/7.jpeg",
+        "/8.jpeg",
+        "/9.jpeg",
+        "/10.jpeg",
+        "/11.jpeg",
+        "/12.jpeg",
+        "/13.jpeg",
+        "/14.jpeg",
+        "/15.jpeg",
+        "/16.jpeg",
+        "/17.jpeg",
+        "/18.jpeg",
+        "/19.jpeg",
+        "/20.jpeg",
+        "/21.jpeg",
+        "/22.jpeg",
+        "/23.jpeg",
+        "/24.jpeg",
+        "/25.jpeg",
+        "/26.jpeg",
+        "/27.jpeg",
+        "/28.jpeg",
+        "/29.jpeg",
+      ];
+
+      const visibleImages = showAll ? images : images.slice(0, 6);
+
+      return (
+        <>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { src: '/tailoring-1.jpg', alt: 'Hand-stitching on premium denim' },
-              { src: '/tailoring-2.jpg', alt: 'Perfectly tailored formal wear' },
-              { src: '/tailoring-3.jpg', alt: 'Quality fabric collection' },
-              { src: '/tailoring-5.jpg', alt: 'Professional fitting service' },
-              { src: '/tailoring-6.jpg', alt: 'Custom tailored menswear' },
-              { src: '/tailoring-4.jpg', alt: 'Our tailoring shop' },
-            ].map((image, i) => (
-              <div key={i} className="group relative overflow-hidden rounded-lg glass-light hover:glass transition-all">
-                <Image src={image.src} alt={image.alt} width={400} height={400} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                  <p className="text-foreground text-sm font-semibold">{image.alt}</p>
-                </div>
+            {visibleImages.map((src, i) => (
+              <div
+                key={i}
+                className="group relative overflow-hidden rounded-lg glass-light hover:glass transition-all"
+              >
+                <Image
+                  src={src}
+                  alt="Janvi Tailor Work"
+                  width={400}
+                  height={400}
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
             ))}
           </div>
-        </div>
-      </section>
+
+          {!showAll && (
+            <div className="text-center mt-12">
+              <button
+                onClick={() => setShowAll(true)}
+                className="px-8 py-3 bg-primary text-primary-foreground font-semibold tracking-wider hover:bg-primary/90 transition-all transform hover:scale-105"
+              >
+                VIEW MORE
+              </button>
+            </div>
+          )}
+        </>
+      );
+    })()}
+  </div>
+</section>
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-24 bg-secondary/20 border-y border-primary/10">
