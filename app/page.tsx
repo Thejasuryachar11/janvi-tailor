@@ -52,61 +52,76 @@ export default function Home() {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-hero opacity-50" />
-        
-        {/* Animated Background Elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl animate-float" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+        {/* Hero Section */}
+<section
+  className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-cover bg-center"
+  style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/60"></div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8 animate-scale-in">
-            <div className="inline-block">
-              <div className="glass px-6 py-3 mb-8">
-                <p className="text-primary text-sm tracking-widest font-semibold">PREMIUM TAILORING SERVICE</p>
-              </div>
-            </div>
-          </div>
+  <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    
+    <div className="mb-8">
+      <div className="inline-block glass px-6 py-3 mb-8">
+        <p className="text-primary text-sm tracking-widest font-semibold">
+          PREMIUM TAILORING SERVICE
+        </p>
+      </div>
+    </div>
 
-          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 leading-tight text-balance animate-slide-up">
-            Perfect Fit,<br />Perfect Craft
-          </h1>
+    <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 leading-tight text-white">
+      Perfect Fit,<br />Perfect Craft
+    </h1>
 
-          <p className="text-xl text-foreground/80 mb-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            With {BUSINESS_INFO.experience} years of expertise, we deliver exceptional tailoring and alterations. From premium jeans to formal wear, every piece is crafted with precision and care.
-          </p>
+    <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+      With {BUSINESS_INFO.experience} years of expertise, we deliver exceptional tailoring and alterations.
+      From premium jeans to formal wear, every piece is crafted with precision and care.
+    </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-primary text-primary-foreground font-semibold tracking-wider hover:bg-primary/90 transition-all transform hover:scale-105">
-              BOOK NOW
-            </a>
-            <a href="#services" className="px-8 py-4 border-2 border-primary text-primary font-semibold tracking-wider hover:bg-primary/10 transition-all">
-              EXPLORE SERVICES
-            </a>
-          </div>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+      <a
+        href={BUSINESS_INFO.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-8 py-4 bg-primary text-primary-foreground font-semibold tracking-wider hover:bg-primary/90 transition-all transform hover:scale-105"
+      >
+        BOOK NOW
+      </a>
 
-          {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20">
-            {[
-              { value: '25+', label: 'Years' },
-              { value: '5000+', label: 'Happy Clients' },
-              { value: '24hrs', label: 'Delivery' },
-            ].map((stat, i) => (
-              <div key={i} className="glass-light p-6 rounded transform hover:scale-110 transition-all">
-                <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                <p className="text-sm text-foreground/60 tracking-widest">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+      <a
+        href="#services"
+        className="px-8 py-4 border-2 border-white text-white font-semibold tracking-wider hover:bg-white/10 transition-all"
+      >
+        EXPLORE SERVICES
+      </a>
+    </div>
+
+    <div className="grid grid-cols-3 gap-8 mt-12">
+      {[
+        { value: '25+', label: 'Years' },
+        { value: '5000+', label: 'Happy Clients' },
+        { value: '24hrs', label: 'Delivery' },
+      ].map((stat, i) => (
+        <div key={i} className="glass-light p-6 rounded transform hover:scale-110 transition-all">
+          <p className="text-2xl font-bold text-primary">{stat.value}</p>
+          <p className="text-sm text-white/70 tracking-widest">{stat.label}</p>
         </div>
+      ))}
+    </div>
+  </div>
 
-        {/* Floating WhatsApp Button */}
-        <a href={BUSINESS_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-40 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:scale-110 transition-transform animate-float">
-          💬
-        </a>
-      </section>
+  {/* Floating WhatsApp Button */}
+  <a
+    href={BUSINESS_INFO.whatsapp}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="fixed bottom-8 right-8 z-40 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:scale-110 transition-transform"
+  >
+    💬
+  </a>
+</section>
+
 
       {/* About Section */}
       <section id="about" className="py-24 bg-secondary/20 border-y border-primary/10">
