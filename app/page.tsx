@@ -142,14 +142,38 @@ useEffect(() => {
   </div>
 
   {/* Floating WhatsApp */}
+  {/* Floating Action Buttons */}
+<div className="fixed bottom-8 right-8 z-40 flex flex-col gap-4">
+
+  {/* WhatsApp */}
   <a
     href={BUSINESS_INFO.whatsapp}
     target="_blank"
     rel="noopener noreferrer"
-    className="fixed bottom-8 right-8 z-40 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:scale-110 transition-transform"
+    className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform"
   >
     💬
   </a>
+
+  {/* Location */}
+  <a
+    href="https://www.google.com/maps/place/JANVI+JEANS+TOILARS/@17.3862107,78.4915743,81m/data=!3m1!1e3!4m12!1m5!3m4!2zMTfCsDIzJzA5LjkiTiA3OMKwMjknMzAuNiJF!8m2!3d17.386084!4d78.491829!3m5!1s0x3bcb99d2129c899f:0x8642dc7b9ecd5ee0!8m2!3d17.3860375!4d78.4918598!16s%2Fg%2F11ys6_hfgq?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform"
+  >
+    📍
+  </a>
+
+  {/* Phone */}
+  <a
+    href="tel:+919700461454"
+    className="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform"
+  >
+    📞
+  </a>
+
+</div>
 
 </section>
 
