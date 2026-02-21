@@ -275,11 +275,22 @@ export default function Home() {
               <h3 className="font-serif text-lg font-bold mb-2 text-primary">Call Us</h3>
               <a href={`tel:${BUSINESS_INFO.phone}`} className="text-foreground/80 hover:text-primary transition-colors">{BUSINESS_INFO.phone}</a>
             </div>
-            <div className="glass-light p-8 rounded-lg">
-              <p className="text-4xl mb-4">📍</p>
-              <h3 className="font-serif text-lg font-bold mb-2 text-primary">Location</h3>
-              <p className="text-foreground/80">{BUSINESS_INFO.address}</p>
-            </div>
+            <a
+  href="https://www.google.com/maps/place/JANVI+JEANS+TOILARS/@17.3862107,78.4915743,81m/data=!3m1!1e3!4m12!1m5!3m4!2zMTfCsDIzJzA5LjkiTiA3OMKwMjknMzAuNiJF!8m2!3d17.386084!4d78.491829!3m5!1s0x3bcb99d2129c899f:0x8642dc7b9ecd5ee0!8m2!3d17.3860375!4d78.4918598!16s%2Fg%2F11ys6_hfgq?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block"
+>
+  <div className="glass-light p-8 rounded-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+    <p className="text-4xl mb-4">📍</p>
+    <h3 className="font-serif text-lg font-bold mb-2 text-primary">
+      Location
+    </h3>
+    <p className="text-foreground/80">
+      {BUSINESS_INFO.address}
+    </p>
+  </div>
+</a>
             <div className="glass-light p-8 rounded-lg">
               <p className="text-4xl mb-4">⏰</p>
               <h3 className="font-serif text-lg font-bold mb-2 text-primary">Hours</h3>
